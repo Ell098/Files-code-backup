@@ -55,6 +55,8 @@ form {
     border-style: solid;
     border: 20px;
     border-color: black;
+
+    margin-bottom: 70px;
 }
 
 header * {
@@ -86,6 +88,11 @@ text-centre #map {
     font-size: 30px;
 }
 
+thead {
+    background-color: #FFF;
+    border: 10px;
+    text-align: center;
+}
 
 
 #clock {
@@ -99,6 +106,12 @@ text-centre #map {
     /*Text padding and margin for clock*/
 }
 
+#uid{
+    vertical-align: top;
+    text-align:left;
+    color: #5e585823;
+    
+}
 
 
 

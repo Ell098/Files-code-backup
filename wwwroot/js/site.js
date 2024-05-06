@@ -5,30 +5,30 @@
 
 const fieldList = [];
 
-function initMap() {
-    var uk = { lat: 53.290, lng: -1.368 }
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 8,
-        center: uk,
-        mapTypeId: "terrain",
-    });
-    const field = [
-        { lat: lat1, lng: long1 },
-        { lat: lat2, lng: long2 },
-        { lat: lat3, lng: long3 },
-        { lat: lat4, lng: long4 },
-    ]
-    const fieldArea = new google.maps.Polygon({
-        path: field,
-        geodesic: true,
-        strokeColor: "Blue",
-        strokeOpacity: 1.0,
-        strokeWeight: 2,
-    });
+//function initMap() {
+//    var uk = { lat: 53.290, lng: -1.368 }
+//    const map = new google.maps.Map(document.getElementById("map"), {
+//        zoom: 8,
+//        center: uk,
+//        mapTypeId: "terrain",
+//    });
+//    const field = [
+//        { lat: 53.0538, lng: 0.0640 },
+//        { lat: 53.0533, lng: 0.0641 },
+//        { lat: 53.0534, lng: 0.0652 },
+//        { lat: 53.0538, lng: 0.0652 },
 
-    fieldArea.setMap(map);
-}
+//    ];
+//    const fieldArea = new google.maps.Polygon({
+//        path: field,
+//        geodesic: true,
+//        strokeColor: "Blue",
+//        strokeOpacity: 1.0,
+//        strokeWeight: 2,
+//    });
+
+//    fieldArea.setMap(map);
+//}
 
 
-fieldList.get
-window.initMap = initMap;
+//window.initMap = initMap;

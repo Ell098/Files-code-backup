@@ -9,7 +9,7 @@ namespace FarmApplication.Pages.Maps
 	public class MappedIndexModel : PageModel
 	{
 		private readonly ApplicationDBContext _db;
-		public IEnumerable<Map> Maps { get; set; }
+		
 
 		//public MappedIndexModel(ApplicationDBContext db)
 		//{

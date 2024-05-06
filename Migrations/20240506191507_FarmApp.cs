@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -7,38 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FarmApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class impraying : Migration
+    public partial class FarmApp : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "FarmApplicationDBUser",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(100)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(100)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FarmApplicationDBUser", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Equipment",
                 columns: table => new
@@ -47,17 +19,11 @@ namespace FarmApplication.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EquipmentName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EquipmentCount = table.Column<int>(type: "int", nullable: false),
-                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Equipment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Equipment_FarmApplicationDBUser_UserID",
-                        column: x => x.UserID,
-                        principalTable: "FarmApplicationDBUser",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -68,26 +34,19 @@ namespace FarmApplication.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FieldName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FieldSize = table.Column<int>(type: "int", nullable: false),
-					ManagerName = table.Column<int>(type: "nvarchar(250)", nullable: false),
-					Latitude1 = table.Column<float>(type: "float", nullable: false),
-					Longitude1 = table.Column<float>(type: "float", nullable: false),
-					Latitude2 = table.Column<float>(type: "float", nullable: false),
-					Longitude2 = table.Column<float>(type: "float", nullable: false),
-					Latitude3 = table.Column<float>(type: "float", nullable: false),
-					Longitude3 = table.Column<float>(type: "float", nullable: false),
-					Latitude4 = table.Column<float>(type: "float", nullable: false),
-					Longitude4 = table.Column<float>(type: "float", nullable: false),
-					UserID = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    Latitude1 = table.Column<float>(type: "real", nullable: false),
+                    Latitude2 = table.Column<float>(type: "real", nullable: false),
+                    Latitude3 = table.Column<float>(type: "real", nullable: false),
+                    Latitude4 = table.Column<float>(type: "real", nullable: false),
+                    Longitude1 = table.Column<float>(type: "real", nullable: false),
+                    Longitude2 = table.Column<float>(type: "real", nullable: false),
+                    Longitude3 = table.Column<float>(type: "real", nullable: false),
+                    Longitude4 = table.Column<float>(type: "real", nullable: false),
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Fields", x => x.FieldID);
-                    table.ForeignKey(
-                        name: "FK_Fields_FarmApplicationDBUser_UserID",
-                        column: x => x.UserID,
-                        principalTable: "FarmApplicationDBUser",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -98,17 +57,11 @@ namespace FarmApplication.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ResourceName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ResourceCount = table.Column<int>(type: "int", nullable: false),
-                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Resources", x => x.ResourceId);
-                    table.ForeignKey(
-                        name: "FK_Resources_FarmApplicationDBUser_UserID",
-                        column: x => x.UserID,
-                        principalTable: "FarmApplicationDBUser",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -120,17 +73,11 @@ namespace FarmApplication.Migrations
                     WorkerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     WorkerSalary = table.Column<int>(type: "int", nullable: false),
                     EmployedUntil = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Workers", x => x.WorkerID);
-                    table.ForeignKey(
-                        name: "FK_Workers_FarmApplicationDBUser_UserID",
-                        column: x => x.UserID,
-                        principalTable: "FarmApplicationDBUser",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -139,15 +86,20 @@ namespace FarmApplication.Migrations
                 {
                     TaskID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    TaskName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TaskField = table.Column<int>(type: "int", nullable: false),
                     TaskResources = table.Column<int>(type: "int", nullable: false),
+                    TaskResourceCount = table.Column<int>(type: "int", nullable: false),
                     TaskEquipment = table.Column<int>(type: "int", nullable: false),
+                    TaskEquipmentCount = table.Column<int>(type: "int", nullable: false),
                     TaskWorker = table.Column<int>(type: "int", nullable: false),
+                    TaskStart = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TaskEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FieldValuesFieldID = table.Column<int>(type: "int", nullable: false),
                     ResourcesValuesResourceId = table.Column<int>(type: "int", nullable: false),
                     EquipmentValuesId = table.Column<int>(type: "int", nullable: false),
                     WorkersValuesWorkerID = table.Column<int>(type: "int", nullable: false),
-                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -157,49 +109,26 @@ namespace FarmApplication.Migrations
                         column: x => x.EquipmentValuesId,
                         principalTable: "Equipment",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Tasks_FarmApplicationDBUser_UserID",
-                        column: x => x.UserID,
-                        principalTable: "FarmApplicationDBUser",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tasks_Fields_FieldValuesFieldID",
                         column: x => x.FieldValuesFieldID,
                         principalTable: "Fields",
                         principalColumn: "FieldID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tasks_Resources_ResourcesValuesResourceId",
                         column: x => x.ResourcesValuesResourceId,
                         principalTable: "Resources",
                         principalColumn: "ResourceId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tasks_Workers_WorkersValuesWorkerID",
                         column: x => x.WorkersValuesWorkerID,
                         principalTable: "Workers",
                         principalColumn: "WorkerID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
-
-               
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Equipment_UserID",
-                table: "Equipment",
-                column: "UserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Fields_UserID",
-                table: "Fields",
-                column: "UserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Resources_UserID",
-                table: "Resources",
-                column: "UserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tasks_EquipmentValuesId",
@@ -217,20 +146,9 @@ namespace FarmApplication.Migrations
                 column: "ResourcesValuesResourceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tasks_UserID",
-                table: "Tasks",
-                column: "UserID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Tasks_WorkersValuesWorkerID",
                 table: "Tasks",
                 column: "WorkersValuesWorkerID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Workers_UserID",
-                table: "Workers",
-                column: "UserID");
-
         }
 
         /// <inheritdoc />
@@ -250,12 +168,6 @@ namespace FarmApplication.Migrations
 
             migrationBuilder.DropTable(
                 name: "Workers");
-
-            migrationBuilder.DropTable(
-                name: "FarmApplicationDBUser");
-
-            migrationBuilder.DropTable(
-                name: "MapsField");
         }
     }
 }

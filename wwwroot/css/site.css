@@ -24,8 +24,8 @@ html {
 
 .navcontainer {
     /*background-image: linear-gradient(#58b457, #b4ceb9);*/
-    padding: 15px;
-    padding-left: 850px;
+    /*padding: 15px;
+    padding-left: 850px;*/
     /*padding-right: 1137px;*/
 }
 
@@ -67,8 +67,8 @@ footborder {
 .footcontainer {
     background-image: linear-gradient(#ecf6ec, #50aa4f);
     padding: 10px;
-    padding-left: 460px;
-    padding-right: 1137px;
+    /*padding-left: 460px;
+    padding-right: 1137px;*/
 }
 
 /*Map area css*/
@@ -85,3 +85,20 @@ text-centre #map {
     position: center;
     font-size: 30px;
 }
+
+
+
+#clock {
+    position: sticky;
+    text-align: center;
+    vertical-align: top;
+    font-size: 20px;
+    color: black;
+    font-weight: 600;
+    margin-right: 10px;
+    /*Text padding and margin for clock*/
+}
+
+
+
+

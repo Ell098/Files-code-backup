@@ -24,8 +24,12 @@
 
 <body >
    <div class="navheader">
+        
         <nav class="navbar navbar-light border-1 box-shadow mb-3 flex-column">
+            
             <div class="navcontainer">
+                <div id="clock"> <script src="~/js/clock.js"></script></div>
+                
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Farm Management Ltd</a>
                 <!-- note - the navbar toggle option does not obscure page content, it will add a scroll if needs be-->
                 <!-- this should diable user access to the nav bar if they arent logged in (prevent them from accessing pages) -->
@@ -145,7 +149,9 @@
         <footer class="footer text-muted border-1 box-shadow mb-3 flex-column">
             <div class="footcontainer">
                 &copy; 2024 - Farm Management Ltd - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                
             </div>
+            
         </footer>
     </div>
 

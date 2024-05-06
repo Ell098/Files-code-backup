@@ -29,9 +29,10 @@ namespace FarmApplication.Model
         public Equipment EquipmentValues { get; set; }
         public Workers WorkersValues { get; set; }
 
-		public string UserID { get; set; }
 		[ForeignKey("UserID")]
-		public virtual FarmApplicationDBUser AspNetUsers { get; set; }
+		public string UserID { get; set; }
+		
+		
 
 	}
 }

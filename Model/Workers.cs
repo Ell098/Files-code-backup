@@ -17,9 +17,10 @@ namespace FarmApplication.Model
 		// remove the worker from the table if it hits this date
 		public DateTime EmployedUntil { get; set; }
 
-		public string UserID { get; set; }
 		[ForeignKey("UserID")]
-		public virtual FarmApplicationDBUser AspNetUsers { get; set; }
+		public string UserID { get; set; }
+		
+		
 
 
 	}

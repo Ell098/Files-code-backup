@@ -16,10 +16,10 @@ namespace FarmApplication.Model
 		[Required]
 		public int ResourceCount { get; set; }
 
-
-		public string UserID { get; set; }
 		[ForeignKey("UserID")]
-		public virtual FarmApplicationDBUser AspNetUsers { get; set; }
+		public string UserID { get; set; }
+		
+		
 
 	}
 }

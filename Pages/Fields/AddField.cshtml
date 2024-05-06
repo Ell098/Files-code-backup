@@ -1,0 +1,40 @@
+﻿@page
+@model FarmApplication.Pages.Fields.AddFieldModel
+
+
+
+
+<form method="post">
+	<div class="createfield" >
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Create Field</h2>
+			<hr />
+		</div>
+		<!-- this line will display errors for custom errors in the .cs file
+			you can set ModelOnly to All
+		<div asp-validation-summary="ModelOnly"></div>
+		-->
+		<div class="mb-3" style="background-color: lightgrey">
+			<label asp-for="field.FieldName">Field Name</label>
+			<input asp-for="field.FieldName" class="form-control" />
+			<!-- you can type in a custom error between class="text-danger"> Custom error here </span> however it will overpower other error displays -->
+			<span asp-validation-for="field.FieldName" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="field.FieldSize">Size of Field (Acres)</label>
+			<input asp-for="field.FieldSize" class="form-control" />
+			<span asp-validation-for="field.FieldSize" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn btn-primary" style="width:150px;">Create Field</button>
+		<a asp-page="Index" class="btn btn-primary" style="width:150px;">Back To List</a>
+	</div>
+</form>
+
+<!-- this section causes errors caught in this page to be client side validated instead of server (page wont refresh).
+	note - the custom validation in the .cs file will still be server validated.
+-->
+@section scripts{
+	@{
+		<partial name="_ValidationScriptsPartial"/>
+	}
+}

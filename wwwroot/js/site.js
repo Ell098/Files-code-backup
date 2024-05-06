@@ -3,32 +3,32 @@
 
 // Write your JavaScript code.
 
-const fieldList = [];
-
 function initMap() {
-    var uk = { lat: 53.290, lng: -1.368 }
-    const map = new google.maps.Map(document.getElementById("map"), {
+    var uk = { lat: 54.1234, lng: 0.547 };
+    var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 8,
         center: uk,
-        mapTypeId: "terrain",
+        mapTypeId: "terrain"
     });
-    const field = [
-        { lat: lat1, lng: long1 },
-        { lat: lat2, lng: long2 },
-        { lat: lat3, lng: long3 },
-        { lat: lat4, lng: long4 },
-    ]
-    const fieldArea = new google.maps.Polygon({
-        path: field,
+
+    var fields = [];
+    fieldsData.forEach(function (obj) {
+        var field = [
+            new google.maps.LatLng(obj.Latitude1, obj.Longitude1),
+            new google.maps.LatLng(53.22985, -0.54035),
+            //new google.maps.LatLng(43.1234, -2.547),
+            //new google.maps.LatLng(33.1234, -3.547),
+        ];
+        fields.push(field);
+    });
+
+    new google.maps.Polygon({
+        paths: fields,
         geodesic: true,
-        strokeColor: "Blue",
+        strokeColor: "Red",
         strokeOpacity: 1.0,
         strokeWeight: 2,
+        map: map
     });
-
-    fieldArea.setMap(map);
 }
 
-
-fieldList.get
-window.initMap = initMap;

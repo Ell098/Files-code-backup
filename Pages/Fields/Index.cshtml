@@ -38,6 +38,14 @@
 				<th>
 					Field size
 				</th>
+				<th>
+					Latitude1
+				</th>
+				<th>
+					Longitude1
+				</th>
+				
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -45,8 +53,10 @@
 
 			{
 				<tr>
-					<td width="50%">@obj.FieldName</td>
-					<td width="30%">@obj.FieldSize</td>
+					<td width="25%">@obj.FieldName</td>
+					<td width="25%">@obj.FieldSize</td>
+					<td width="25%">@obj.Latitude1</td>
+					<td width="25%">@obj.Longitude1</td>
 					<td>
 						<div class="w-75 btn-group" role="group">
 						<a asp-page="EditField" asp-route-id="@obj.FieldID" class="btn btn-primary mx-2">Edit
@@ -67,11 +77,48 @@
 
 		<h1>Map of fields for user</h1>
 		<div id="map"></div>
-		<script type="text/javascript" src="~/js/site.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXhl_GzMw20renhg092Eksy1GqMT1r3VM&callback=initMap&v=weekly"
-				async defer>
-		</script>
+		@section Scripts {
+			@* <script>
 
+				var uk = { lat: 53.261954145266294, lng: - 1.547932385190446 }
+				function initMap() {
+					var map = new google.maps.Map(document.getElementById("map"), {
+						zoom: 8,
+						center: uk,
+						mapTypeId: "terrain"
+					});
+					
+					var fields = [];
+					@foreach (var obj in Model.Fields.Where(f => f.UserID == currentUserId))
+					{
+						var field = [];
+						field.push(@obj.Latitude1, @obj.Longitude1);
+						field.push(53.1234, 70.5678);
+						fields.push(field);
+					}
+					new google.maps.Polygon({
+						paths: fields,
+						geodesic: true,
+						strokeColor: "Red",
+						strokeOpacity: 1.0,
+						strokeWeight: 2,
+					});
+
+				}
+				
+			
+			</script> *@
+			<script>
+				var fieldsData = [
+				@foreach (var obj in Model.Fields.Where(f => f.UserID == currentUserId))
+				{
+					<text>{ Latitude1: @obj.Latitude1, Longitude1: @obj.Longitude1 }, </text>
+				}
+					];
+			</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXhl_GzMw20renhg092Eksy1GqMT1r3VM&callback=initMap&v=weekly"async defer></script>
+			<script src="~/js/site.js"></script>
+		}
 
 	</body>
 

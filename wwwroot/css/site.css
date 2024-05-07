@@ -16,9 +16,8 @@ html {
 
 .navheader {
     margin-top: -90px;
-    position: fixed;
-    width: 100%;
-    height: fit-content;
+    /*position: fixed;*/
+
     background-image: linear-gradient(#50aa4f, #ecf6ec);
     border-bottom: 10px;
     border-color: black;
@@ -102,8 +101,7 @@ header * {
 /*Map area css*/
 
 #map {
-    display: flex;
-    position: static;
+    
     height: 400px;
     margin-bottom: 100px;
 }

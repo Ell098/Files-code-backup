@@ -25,6 +25,8 @@ namespace FarmApplication.Pages
         public DateTime SelectedDay { get; set; } = DateTime.Now.Date;
         public IEnumerable<Workers> WorkersOnFarm { get; set; }
 
+        public IEnumerable<Field> Fields { get; set; }
+
         [ActivatorUtilitiesConstructor]
         public IndexModel(UserManager<FarmApplicationDBUser> userManager, ApplicationDBContext db)
         {
@@ -36,7 +38,7 @@ namespace FarmApplication.Pages
 
         public async Task OnGetAsync()
         {
-            
+            Fields = _db.Fields;
 
             WorkersOnFarm = _db.Workers;
 

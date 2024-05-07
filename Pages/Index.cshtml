@@ -17,6 +17,9 @@
     int counter = 0;
     int employees = 0;
     int complete = 0;
+    int ongoing = 0;
+    int fields = 0;
+
     <div class="text-center">
 
         <h1 class="display-4">Farm Overview</h1>
@@ -26,6 +29,12 @@
 
     </div>
 
+    <head>
+        <title>Map for fields</title>
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    </head>
+    
 
 
     <head>
@@ -39,64 +48,120 @@
             <div class="map-container">
                 <h1>Fields Map</h1>
                 <div id="map"></div>
-                <script type="text/javascript" src="~/js/site.js"></script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXhl_GzMw20renhg092Eksy1GqMT1r3VM&callback=initMap&v=weekly"
-                        async defer>
-                </script>
+                @section Scripts {
+                <script>
+                    var fieldsData = [
+                    @foreach (var obj in Model.Fields.Where(f => f.UserID == currentUserId))
+                        {
+                            <text>{
+                                    Latitude1: @obj.Latitude1, Longitude1: @obj.Longitude1,
+                                    Latitude2: @obj.Latitude2, Longitude2: @obj.Longitude2,
+                                    Latitude3: @obj.Latitude3, Longitude3: @obj.Longitude3,
+                                    Latitude4: @obj.Latitude4, Longitude4: @obj.Longitude4,
+
+                                }, </text>
+                        }
+                                                            ];
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXhl_GzMw20renhg092Eksy1GqMT1r3VM&callback=initMap&v=weekly" async defer></script>
+                    <script src="~/js/site.js"></script>
+                }
             </div>
             <div class="analytics-container">
-                <div class="completed-tasks-container">
-                    @foreach (var task in Model.TaskTimetable.Where(f => f.UserID == currentUserId))
-                    {
 
-                        @if (@task.TaskEnd.Date < DateTime.Now)
+                <div class="top">
+                    <div class="completed-tasks-container border-box">
+                        @foreach (var task in Model.TaskTimetable.Where(f => f.UserID == currentUserId))
                         {
-                            complete = complete + 1;
 
+                            @if (@task.TaskEnd.Date < DateTime.Now)
+                            {
+                                complete = complete + 1;
+
+                            }
                         }
-                    }
 
-                    <div id="count" class="counter-container">
-                        <div class="counter-title">No. of Completed Tasks</div>
-                        <div class="counter">@complete </div>
+                        <div id="count" class="counter-container">
+                            <div class="counter-title">No. of Completed Tasks</div>
+                            <div class="counter">@complete </div>
+                        </div>
+
+
                     </div>
 
-
-                </div>
-
-                <div class="completed-tasks-container">
-                    @foreach (var task in Model.TaskTimetable.Where(f => f.UserID == currentUserId))
-                    {
-
-                        @if (@task.TaskEnd.Date > DateTime.Now)
+                    <div class="completed-tasks-container border-box">
+                        @foreach (var task in Model.TaskTimetable.Where(f => f.UserID == currentUserId))
                         {
-                            counter = counter + 1;
 
+                            @if (@task.TaskEnd.Date > DateTime.Now)
+                            {
+                                counter = counter + 1;
+
+                            }
                         }
-                    }
 
-                    <div id="count" class="counter-container">
-                        <div class="counter-title">No. of Uncompleted Tasks</div>
-                        <div class="counter">@counter </div>
+                        <div id="count" class="counter-container">
+                            <div class="counter-title">No. of Uncompleted Tasks</div>
+                            <div class="counter">@counter </div>
+                        </div>
+
+
                     </div>
 
+                    <div class="completed-tasks-container border-box">
+                        @foreach (var task in Model.TaskTimetable.Where(f => f.UserID == currentUserId))
+                        {
 
+                            @if (@task.TaskStart.Date < DateTime.Now && @task.TaskEnd.Date > DateTime.Now)
+                            {
+                                ongoing = ongoing + 1;
+
+                            }
+                        }
+
+                        <div id="count" class="counter-container">
+                            <div class="counter-title">No. of Ongoing Tasks</div>
+                            <div class="counter">@ongoing </div>
+                        </div>
+
+
+                    </div>
                 </div>
+                
 
-                <div class="completed-tasks-container">
-                    @foreach (var obj in Model.WorkersOnFarm.Where(f => f.UserID == currentUserId))
-                    {
+                <div class="bottom">
+                    <div class="completed-tasks-container border-box">
+                        @foreach (var obj in Model.WorkersOnFarm.Where(f => f.UserID == currentUserId))
+                        {
 
-                        employees = employees + 1;
-                    }
+                            employees = employees + 1;
+                        }
 
-                    <div id="count" class="counter-container">
-                        <div class="counter-title">No. of Employees</div>
-                        <div class="counter">@employees </div>
+                        <div id="count" class="counter-container">
+                            <div class="counter-title">No. of Employees</div>
+                            <div class="counter">@employees </div>
+                        </div>
+
+
                     </div>
 
+                    <div class="completed-tasks-container border-box">
+                        @foreach (var obj in Model.Fields.Where(f => f.UserID == currentUserId))
+                        {
 
+                            fields = fields + 1;
+                        }
+
+                        <div id="count" class="counter-container">
+                            <div class="counter-title">No. of Fields</div>
+                            <div class="counter">@fields </div>
+                        </div>
+
+
+                    </div>
                 </div>
+
+                
             </div>
         </div>
 
@@ -107,11 +172,7 @@
 
 
     <!-- this below is an implementation of a live text clock -->
-    @section Scripts {
-    <script>
-
-    </script>
-    }
+  
 
 
 }

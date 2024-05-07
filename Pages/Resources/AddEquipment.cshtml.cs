@@ -40,7 +40,7 @@ namespace FarmApplication.Pages.Resources
 			equipment.UserID = currentUser.Id;
 			_db.Equipment.Add(equipment);
 			await _db.SaveChangesAsync();
-			TempData["success"] = "Item Added";
+			TempData["equipment"] = "Item Added";
 			return RedirectToPage("ResourceIndex");
 
 

@@ -43,7 +43,7 @@ namespace FarmApplication.Pages.Resources
 			workers.UserID = currentUser.Id;
 			_db.Workers.Add(workers);
 			await _db.SaveChangesAsync();
-			TempData["success"] = "Employee Added";
+			TempData["workers"] = "Employee Added";
 			return RedirectToPage("ResourceIndex");
 
 			//if (ModelState.IsValid)

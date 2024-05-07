@@ -37,15 +37,15 @@
 	<br /><br />
 
 	<!-- this will show a set notification for when one of the three actions is performed on the database. Notification can be found at the end of the .cs files -->
-	@if (TempData["success"] != null)
+	@if (TempData["resources"] != null)
 	{
 
-		<p class="text-success">@TempData["success"]</p>
+		<p class="text-success">@TempData["resources"]</p>
 
 	}
-	@if (TempData["RSuccess"] != null)
+	@if (TempData["resources-edit"] != null)
 	{
-		<p class="text-success">@TempData["RSuccess"]</p>
+		<p class="text-success">@TempData["resources-edit"]</p>
 	}
 
 
@@ -102,15 +102,15 @@
 	<br /><br />
 
 	<!-- this will show a set notification for when one of the three actions is performed on the database. Notification can be found at the end of the .cs files -->
-	@if (TempData["success"] != null)
+	@if (TempData["equipment"] != null)
 	{
 
-		<p class="text-success">@TempData["success"]</p>
+		<p class="text-success">@TempData["equipment"]</p>
 
 	}
-	@if(TempData["ESuccess"]!= null){
+	@if(TempData["equipment-edit"]!= null){
 
-		<p class="text-success">@TempData["ESuccess"]</p>
+		<p class="text-success">@TempData["equipment-edit"]</p>
 
 	}
 
@@ -166,10 +166,17 @@
 	<br /><br />
 
 	<!-- this will show a set notification for when one of the three actions is performed on the database. Notification can be found at the end of the .cs files -->
-	@if (TempData["success"] != null)
+	@if (TempData["workers-edit"] != null)
 	{
 
-		<p class="text-success">@TempData["success"]</p>
+		<p class="text-success">@TempData["workers-edit"]</p>
+
+	}
+
+	@if (TempData["workers"] != null)
+	{
+
+		<p class="text-success">@TempData["workers"]</p>
 
 	}
 

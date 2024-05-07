@@ -38,7 +38,7 @@ namespace FarmApplication.Pages.Resources
 			{
 				_db.Workers.Update(WorkersOnFarm);
 				await _db.SaveChangesAsync();
-				TempData["success"] = "Employee Updated";
+				TempData["workers-edit"] = "Employee Updated";
 				return RedirectToPage("ResourceIndex");
 
 			}

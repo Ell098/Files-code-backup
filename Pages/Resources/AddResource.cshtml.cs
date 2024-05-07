@@ -40,7 +40,7 @@ namespace FarmApplication.Pages.Resources
 			Resources.UserID = currentUser.Id;
 			_db.Resources.Add(Resources);
 			await _db.SaveChangesAsync();
-			TempData["success"] = "Resource Added";
+			TempData["resources"] = "Resource Added";
 			return RedirectToPage("ResourceIndex");
 
 			//if (ModelState.IsValid)

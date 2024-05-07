@@ -36,7 +36,7 @@ namespace FarmApplication.Pages.Resources
 			{
 				_db.Equipment.Update(equipment);
 				await _db.SaveChangesAsync();
-				TempData["success"] = "Item Updated";
+				TempData["equipment-edit"] = "Item Updated";
 				return RedirectToPage("ResourceIndex");
 
 			}

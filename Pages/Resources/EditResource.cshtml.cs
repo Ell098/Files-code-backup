@@ -36,7 +36,7 @@ namespace FarmApplication.Pages.Resources
 			{
 				_db.Resources.Update(Resources);
 				await _db.SaveChangesAsync();
-				TempData["success"] = "Resource Updated";
+				TempData["resources-edit"] = "Resource Updated";
 				return RedirectToPage("ResourceIndex");
 
 			}

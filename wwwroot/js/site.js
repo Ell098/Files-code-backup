@@ -15,9 +15,9 @@ function initMap() {
     fieldsData.forEach(function (obj) {
         var field = [
             new google.maps.LatLng(obj.Latitude1, obj.Longitude1),
-            new google.maps.LatLng(53.22985, -0.54035),
-            //new google.maps.LatLng(43.1234, -2.547),
-            //new google.maps.LatLng(33.1234, -3.547),
+            new google.maps.LatLng(obj.Latitude2, obj.Longitude2),
+            new google.maps.LatLng(obj.Latitude3, obj.Longitude3),
+            new google.maps.LatLng(obj.Latitude4, obj.Longitude4),
         ];
         fields.push(field);
     });

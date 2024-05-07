@@ -44,6 +44,24 @@
 				<th>
 					Longitude1
 				</th>
+				<th>
+					Latitude2
+				</th>
+				<th>
+					Longitude2
+				</th>
+				<th>
+					Latitude3
+				</th>
+				<th>
+					Longitude3
+				</th>
+				<th>
+					Latitude4
+				</th>
+				<th>
+					Longitude4
+				</th>
 				
 				
 			</tr>
@@ -53,10 +71,16 @@
 
 			{
 				<tr>
-					<td width="25%">@obj.FieldName</td>
-					<td width="25%">@obj.FieldSize</td>
-					<td width="25%">@obj.Latitude1</td>
-					<td width="25%">@obj.Longitude1</td>
+					<td width="10%">@obj.FieldName</td>
+					<td width="10%">@obj.FieldSize</td>
+					<td width="10%">@obj.Latitude1</td>
+					<td width="10%">@obj.Longitude1</td>
+					<td width="10%">@obj.Latitude2</td>
+					<td width="10%">@obj.Longitude2</td>
+					<td width="10%">@obj.Latitude3</td>
+					<td width="10%">@obj.Longitude3</td>
+					<td width="10%">@obj.Latitude4</td>
+					<td width="10%">@obj.Longitude4</td>
 					<td>
 						<div class="w-75 btn-group" role="group">
 						<a asp-page="EditField" asp-route-id="@obj.FieldID" class="btn btn-primary mx-2">Edit
@@ -112,7 +136,13 @@
 				var fieldsData = [
 				@foreach (var obj in Model.Fields.Where(f => f.UserID == currentUserId))
 				{
-					<text>{ Latitude1: @obj.Latitude1, Longitude1: @obj.Longitude1 }, </text>
+					<text>{ 
+						Latitude1: @obj.Latitude1, Longitude1: @obj.Longitude1,
+						Latitude2: @obj.Latitude2, Longitude2: @obj.Longitude2,
+						Latitude3: @obj.Latitude3, Longitude3: @obj.Longitude3,
+						Latitude4: @obj.Latitude4, Longitude4: @obj.Longitude4,
+
+						}, </text>
 				}
 					];
 			</script>

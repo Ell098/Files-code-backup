@@ -15,9 +15,12 @@ html {
 
 
 .navheader {
+    position: fixed;
+    width: 100%;
     background-image: linear-gradient(#50aa4f, #ecf6ec);
     border-bottom: 10px;
     border-color: black;
+    overflow: hidden;
     /* background-image: radial-gradient(#a1ad79, #ffd800)*/
 }
 
@@ -62,15 +65,24 @@ form {
 header * {
 }
 
-footborder {
-    /*position: sticky;*/
-    /*background-image: linear-gradient(#ecf6ec, #50aa4f);*/
+
+#ResourceTable {
+    margin-bottom: 80px;
+    position: relative;
+    padding: inherit;
+}
+
+.footborder{
+    height: 100%;
+    width: 100%;
 }
 
 .footcontainer {
     background-image: linear-gradient(#ecf6ec, #50aa4f);
-    padding: 10px;
+    padding: 15px;
+    
     position: sticky;
+    width: 100%;
     margin-bottom: -20px ;
     /*padding-left: 460px;
     padding-right: 1137px;*/
@@ -79,6 +91,8 @@ footborder {
 /*Map area css*/
 
 #map {
+    display: flex;
+    position: static;
     height: 400px;
     margin-bottom: 100px;
 }

@@ -1,0 +1,31 @@
+﻿@page
+@model FarmApplication.Pages.Resources.DeleteWorkerModel
+
+<form method="post">
+	<input hidden asp-for="worker.WorkerID"/>
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Remove Worker</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="worker.WorkerName">Worker Name</label>
+			<input asp-for="worker.WorkerName" disabled class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label asp-for="worker.WorkerSalary">Worker Pay / Maintenance</label>
+			<input asp-for="worker.WorkerSalary" disabled class="form-control" />
+		</div>
+		<button type="submit" class="btn btn-danger" style="width:150px;">Delete Worker</button>
+		<a asp-page="ResourceIndex" class="btn btn-primary" style="width:150px;">Back To List</a>
+	</div>
+</form>
+
+<!-- this section causes errors caught in this page to be client side validated instead of server (page wont refresh).
+	note - the custom validation in the .cs file will still be server validated.
+-->
+@section scripts{
+	@{
+		<partial name="_ValidationScriptsPartial"/>
+	}
+}

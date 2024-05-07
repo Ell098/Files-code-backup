@@ -102,36 +102,6 @@
 		<h1>Map of fields for user</h1>
 		<div id="map"></div>
 		@section Scripts {
-			@* <script>
-
-				var uk = { lat: 53.261954145266294, lng: - 1.547932385190446 }
-				function initMap() {
-					var map = new google.maps.Map(document.getElementById("map"), {
-						zoom: 8,
-						center: uk,
-						mapTypeId: "terrain"
-					});
-					
-					var fields = [];
-					@foreach (var obj in Model.Fields.Where(f => f.UserID == currentUserId))
-					{
-						var field = [];
-						field.push(@obj.Latitude1, @obj.Longitude1);
-						field.push(53.1234, 70.5678);
-						fields.push(field);
-					}
-					new google.maps.Polygon({
-						paths: fields,
-						geodesic: true,
-						strokeColor: "Red",
-						strokeOpacity: 1.0,
-						strokeWeight: 2,
-					});
-
-				}
-				
-			
-			</script> *@
 			<script>
 				var fieldsData = [
 				@foreach (var obj in Model.Fields.Where(f => f.UserID == currentUserId))

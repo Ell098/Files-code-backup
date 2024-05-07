@@ -16,9 +16,8 @@ html {
 
 .navheader {
     margin-top: -90px;
-    position: fixed;
-    width: 100%;
-    height: fit-content;
+    /*position: fixed;*/
+
     background-image: linear-gradient(#50aa4f, #ecf6ec);
     border-bottom: 10px;
     border-color: black;
@@ -102,10 +101,14 @@ header * {
 /*Map area css*/
 
 #map {
-    display: flex;
-    position: static;
+    
     height: 400px;
     margin-bottom: 100px;
+}
+
+.map-container {
+    width: 50%;
+    flex: 1;
 }
 
 
@@ -149,3 +152,49 @@ thead {
 
 
 
+/*Overview*/
+/* Ensuring that the overview container arranges its children in a row */
+.overview-container {
+    display: flex;
+    flex-direction: row; /* Align children horizontally */
+    justify-content: space-between; /* This will put some space between the two containers */
+    align-items: flex-start; /* Aligns items to the top */
+    width: 100%; /* Ensures the container takes full width */
+}
+
+/* Setting specific flex properties for the containers */
+.map-container, .analytics-container {
+    flex: 1; /* Each container will take equal space */
+    margin: 10px; /* Optional: adds some space around each container */
+    padding: 20px; /* Optional: adds internal space */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+.analytics-container {
+    flex: 1;
+    width: 50%
+}
+/*Counter*/
+.counter-container {
+}
+
+.counter-title {
+}
+
+.counter {
+    font: 20px;
+}
+
+#count, #employee, #task {
+    margin-bottom: 80px;
+    position: relative;
+    padding: inherit;
+}
+
+
+/* Ensuring responsiveness */
+@media (max-width: 768px) {
+    .overview-container {
+        flex-direction: column; /* Stack children vertically on smaller screens */
+    }
+}

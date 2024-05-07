@@ -2,7 +2,10 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Retrieve current user's ID
 }
+
+@using System.Security.Claims
 @using Microsoft.AspNetCore.Identity
 @using FarmApplication.Areas.Identity.Data
 
@@ -11,30 +14,106 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
+    int counter = 0;
+    int employees = 0;
+    int complete = 0;
+    <div class="text-center">
+
+        <h1 class="display-4">Farm Overview</h1>
+        <p>I think we should make this like a clear overview page to view resources, summary of tasks, farm information (such as a map), etc...</p>
+        <p>Check Pages/Index/Index.cshtml to see how to grab the users userID</p>
+
+
+    </div>
+
+
+
     <head>
-        
-        
+        <title>Fields Map</title>
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     </head>
-    
     <body>
-      <br />
-        <div id="fix" class="text-center">
-            <h1 class="display-4">Welcome to the farm application!</h1>
-            <p>I think we should make this like a clear overview page to view resources, summary of tasks, farm information (such as a map), etc...</p>
-            <p>Check Pages/Index/Index.cshtml to see how to grab the users userID</p>
-            
-	
+
+        <div class="overview-container">
+            <div class="map-container">
+                <h1>Fields Map</h1>
+                <div id="map"></div>
+                <script type="text/javascript" src="~/js/site.js"></script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXhl_GzMw20renhg092Eksy1GqMT1r3VM&callback=initMap&v=weekly"
+                        async defer>
+                </script>
+            </div>
+            <div class="analytics-container">
+                <div class="completed-tasks-container">
+                    @foreach (var task in Model.TaskTimetable.Where(f => f.UserID == currentUserId))
+                    {
+
+                        @if (@task.TaskEnd.Date < DateTime.Now)
+                        {
+                            complete = complete + 1;
+
+                        }
+                    }
+
+                    <div id="count" class="counter-container">
+                        <div class="counter-title">No. of Completed Tasks</div>
+                        <div class="counter">@complete </div>
+                    </div>
+
+
+                </div>
+
+                <div class="completed-tasks-container">
+                    @foreach (var task in Model.TaskTimetable.Where(f => f.UserID == currentUserId))
+                    {
+
+                        @if (@task.TaskEnd.Date > DateTime.Now)
+                        {
+                            counter = counter + 1;
+
+                        }
+                    }
+
+                    <div id="count" class="counter-container">
+                        <div class="counter-title">No. of Uncompleted Tasks</div>
+                        <div class="counter">@counter </div>
+                    </div>
+
+
+                </div>
+
+                <div class="completed-tasks-container">
+                    @foreach (var obj in Model.WorkersOnFarm.Where(f => f.UserID == currentUserId))
+                    {
+
+                        employees = employees + 1;
+                    }
+
+                    <div id="count" class="counter-container">
+                        <div class="counter-title">No. of Employees</div>
+                        <div class="counter">@employees </div>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
+
+
+
+
     </body>
+
 
     <!-- this below is an implementation of a live text clock -->
     @section Scripts {
     <script>
-        
+
     </script>
     }
 
-    
+
 }
 
 

@@ -63,12 +63,15 @@ header * {
 }
 
 footborder {
-    /*background-image: linear-gradient(to left, #a1ad79, #89bb09);*/
+    /*position: sticky;*/
+    /*background-image: linear-gradient(#ecf6ec, #50aa4f);*/
 }
 
 .footcontainer {
     background-image: linear-gradient(#ecf6ec, #50aa4f);
     padding: 10px;
+    position: sticky;
+    margin-bottom: -20px ;
     /*padding-left: 460px;
     padding-right: 1137px;*/
 }
@@ -77,6 +80,7 @@ footborder {
 
 #map {
     height: 400px;
+    margin-bottom: 100px;
 }
 
 

@@ -11,16 +11,21 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
+    <head>
+        
+        
+    </head>
     
-    <div class="text-center">
-
-        <h1 class="display-4">Welcome to the farm application!</h1>
-        <p>I think we should make this like a clear overview page to view resources, summary of tasks, farm information (such as a map), etc...</p>
-        <p>Check Pages/Index/Index.cshtml to see how to grab the users userID</p>
-    
+    <body>
+      <br />
+        <div id="fix" class="text-center">
+            <h1 class="display-4">Welcome to the farm application!</h1>
+            <p>I think we should make this like a clear overview page to view resources, summary of tasks, farm information (such as a map), etc...</p>
+            <p>Check Pages/Index/Index.cshtml to see how to grab the users userID</p>
+            
 	
-    </div>
-    
+        </div>
+    </body>
 
     <!-- this below is an implementation of a live text clock -->
     @section Scripts {

@@ -19,24 +19,20 @@
         they seem to display a few pnts higher on the line then the text for each page
     -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
+    <div class="navheader">
 
-
-<body >
-   <div class="navheader">
-        
         <nav class="navbar navbar-light border-1 box-shadow mb-3 flex-column">
-            
+
             <div class="navcontainer">
                 <div id="clock"> <script src="~/js/clock.js"></script></div>
-                
+
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Farm Management Ltd</a>
                 <!-- note - the navbar toggle option does not obscure page content, it will add a scroll if needs be-->
                 <!-- this should diable user access to the nav bar if they arent logged in (prevent them from accessing pages) -->
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="navbar-collapse collapse">
@@ -48,7 +44,7 @@
                                 </a>
                             </li>
                             <!-- this page should allow the user to have full control over adding or editing the amount of resources avaliable
-                            here they should be able to select how many workers they have, robots, stock, etc... 
+                            here they should be able to select how many workers they have, robots, stock, etc...
                             using the data entered they should be allowed to allocate an amount of resources to each field when creating a task for the field
                             I want it so that once a task has completed that equipment/ employee resources are returned but stock isn't
                             -->
@@ -62,10 +58,10 @@
                                 </a>
                             </li>
                             @* <li class="nav-item">
-                                <a class="nav-link text-dark" a href="~/Maps/MapsIndex">
-                                    <span class="material-icons">map</span> &ensp;Maps IIIII No longer used due to change in plans for implemetnation
-                                </a>
-                            </li> *@
+                        <a class="nav-link text-dark" a href="~/Maps/MapsIndex">
+                        <span class="material-icons">map</span> &ensp;Maps IIIII No longer used due to change in plans for implemetnation
+                        </a>
+                        </li> *@
                             <!-- links to the Fields folder Index page. Allows for the creation of fields by adding a name and size.-->
                             <li class="nav-item">
                                 <a class="nav-link text-dark" a href="~/Fields/Index">
@@ -74,15 +70,15 @@
                             </li>
                             <!-- note there isnt a calendar or settings page currently:: Calandar added -->
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Calendar">
+                                <a class="nav-link text-dark" a href="~/Tasks/Calendar">
                                     <span class="material-icons">insert_invitation</span> &ensp;Calendar
                                 </a>
                             </li>
                             @* <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Settings">
-                                    <span class="material-icons">build</span> &ensp;Settings
-                                </a>
-                            </li> *@
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Settings">
+                        <span class="material-icons">build</span> &ensp;Settings
+                        </a>
+                        </li> *@
                             <!-- Will prob change this to just link to the log in page, but actually need a method to log them out -->
                             <!--
                             <li class="nav-item">
@@ -101,6 +97,11 @@
             </div>
         </nav>
     </div>
+</head>
+
+
+<body >
+
 
     <!-- 
         

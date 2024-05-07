@@ -15,12 +15,15 @@ html {
 
 
 .navheader {
+    margin-top: -90px;
     position: fixed;
     width: 100%;
+    height: fit-content;
     background-image: linear-gradient(#50aa4f, #ecf6ec);
     border-bottom: 10px;
     border-color: black;
-    overflow: hidden;
+
+    
     /* background-image: radial-gradient(#a1ad79, #ffd800)*/
 }
 
@@ -30,6 +33,7 @@ html {
     /*padding: 15px;
     padding-left: 850px;*/
     /*padding-right: 1137px;*/
+
 }
 
 /*===============*/
@@ -39,6 +43,7 @@ html {
 }
 
 body {
+    padding-top: 90px;
     background-color: #FFF;
 }
 
@@ -48,6 +53,7 @@ thead {
 }
 
 form {
+
     display: container;
     border: 20px;
     padding: 20px;
@@ -65,6 +71,11 @@ form {
 header * {
 }
 
+#fix{
+    margin-top: 0px;
+    text-align:center;
+    vertical-align:central;
+}
 
 #ResourceTable {
     margin-bottom: 80px;
@@ -98,6 +109,7 @@ header * {
 }
 
 
+
 /*Clock area */
 
 text-centre #map {
@@ -129,6 +141,10 @@ thead {
     text-align:left;
     color: #5e585823;
     
+}
+
+#Creators li{
+    display: inline-table;
 }
 
 

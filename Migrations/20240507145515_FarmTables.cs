@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FarmApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class FarmApp : Migration
+    public partial class FarmTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -87,18 +87,18 @@ namespace FarmApplication.Migrations
                     TaskID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TaskName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TaskField = table.Column<int>(type: "int", nullable: false),
-                    TaskResources = table.Column<int>(type: "int", nullable: false),
-                    TaskResourceCount = table.Column<int>(type: "int", nullable: false),
-                    TaskEquipment = table.Column<int>(type: "int", nullable: false),
-                    TaskEquipmentCount = table.Column<int>(type: "int", nullable: false),
-                    TaskWorker = table.Column<int>(type: "int", nullable: false),
+                    TaskField = table.Column<int>(type: "int", nullable: true),
+                    TaskResources = table.Column<int>(type: "int", nullable: true),
+                    TaskResourceCount = table.Column<int>(type: "int", nullable: true),
+                    TaskEquipment = table.Column<int>(type: "int", nullable: true),
+                    TaskEquipmentCount = table.Column<int>(type: "int", nullable: true),
+                    TaskWorker = table.Column<int>(type: "int", nullable: true),
                     TaskStart = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TaskEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FieldValuesFieldID = table.Column<int>(type: "int", nullable: false),
-                    ResourcesValuesResourceId = table.Column<int>(type: "int", nullable: false),
-                    EquipmentValuesId = table.Column<int>(type: "int", nullable: false),
-                    WorkersValuesWorkerID = table.Column<int>(type: "int", nullable: false),
+                    FieldValuesFieldID = table.Column<int>(type: "int", nullable: true),
+                    ResourcesValuesResourceId = table.Column<int>(type: "int", nullable: true),
+                    EquipmentValuesId = table.Column<int>(type: "int", nullable: true),
+                    WorkersValuesWorkerID = table.Column<int>(type: "int", nullable: true),
                     UserID = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -108,26 +108,22 @@ namespace FarmApplication.Migrations
                         name: "FK_Tasks_Equipment_EquipmentValuesId",
                         column: x => x.EquipmentValuesId,
                         principalTable: "Equipment",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Tasks_Fields_FieldValuesFieldID",
                         column: x => x.FieldValuesFieldID,
                         principalTable: "Fields",
-                        principalColumn: "FieldID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "FieldID");
                     table.ForeignKey(
                         name: "FK_Tasks_Resources_ResourcesValuesResourceId",
                         column: x => x.ResourcesValuesResourceId,
                         principalTable: "Resources",
-                        principalColumn: "ResourceId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ResourceId");
                     table.ForeignKey(
                         name: "FK_Tasks_Workers_WorkersValuesWorkerID",
                         column: x => x.WorkersValuesWorkerID,
                         principalTable: "Workers",
-                        principalColumn: "WorkerID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "WorkerID");
                 });
 
             migrationBuilder.CreateIndex(

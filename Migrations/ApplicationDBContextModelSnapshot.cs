@@ -78,48 +78,48 @@ namespace FarmApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskID"));
 
-                    b.Property<int>("EquipmentValuesId")
+                    b.Property<int?>("EquipmentValuesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FieldValuesFieldID")
+                    b.Property<int?>("FieldValuesFieldID")
                         .HasColumnType("int");
 
-                    b.Property<int>("ResourcesValuesResourceId")
+                    b.Property<int?>("ResourcesValuesResourceId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TaskEnd")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TaskEquipment")
+                    b.Property<int?>("TaskEquipment")
                         .HasColumnType("int");
 
-                    b.Property<int>("TaskEquipmentCount")
+                    b.Property<int?>("TaskEquipmentCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("TaskField")
+                    b.Property<int?>("TaskField")
                         .HasColumnType("int");
 
                     b.Property<string>("TaskName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TaskResourceCount")
+                    b.Property<int?>("TaskResourceCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("TaskResources")
+                    b.Property<int?>("TaskResources")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TaskStart")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TaskWorker")
+                    b.Property<int?>("TaskWorker")
                         .HasColumnType("int");
 
                     b.Property<string>("UserID")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("WorkersValuesWorkerID")
+                    b.Property<int?>("WorkersValuesWorkerID")
                         .HasColumnType("int");
 
                     b.HasKey("TaskID");
@@ -214,27 +214,19 @@ namespace FarmApplication.Migrations
                 {
                     b.HasOne("FarmApplication.Model.Equipment", "EquipmentValues")
                         .WithMany()
-                        .HasForeignKey("EquipmentValuesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EquipmentValuesId");
 
                     b.HasOne("FarmApplication.Model.Field", "FieldValues")
                         .WithMany()
-                        .HasForeignKey("FieldValuesFieldID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FieldValuesFieldID");
 
                     b.HasOne("FarmApplication.Model.FarmResources", "ResourcesValues")
                         .WithMany()
-                        .HasForeignKey("ResourcesValuesResourceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ResourcesValuesResourceId");
 
                     b.HasOne("FarmApplication.Model.Workers", "WorkersValues")
                         .WithMany()
-                        .HasForeignKey("WorkersValuesWorkerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("WorkersValuesWorkerID");
 
                     b.Navigation("EquipmentValues");
 

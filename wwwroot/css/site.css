@@ -191,6 +191,8 @@ thead {
     margin: 10px;
     padding: 20px;
     border: 2px solid black;
+    border-radius: 20px 0;
+    box-shadow: 10px 10px #34333381;
     text-align: center;
     width: calc(50% - 20px); /* Adjusts width taking margin into account */
     box-sizing: border-box;

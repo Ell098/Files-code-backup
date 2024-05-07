@@ -4,7 +4,7 @@
 // Write your JavaScript code.
 
 function initMap() {
-    var uk = { lat: 54.1234, lng: 0.547 };
+    var uk = { lat: 53.123, lng: -0.3 };
     var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 8,
         center: uk,

@@ -1,9 +1,13 @@
 ﻿@page
 @model FarmApplication.Pages.Fields.EditFieldModel
 
+
+
+
+
 <form method="post">
 	<input hidden asp-for="field.FieldID"/>
-	<div class="border p-3 mt-4">
+	<div class="createfield" >
 		<div class="row pb-2">
 			<h2 class="text-primary pl-3">Edit Field</h2>
 			<hr />
@@ -12,7 +16,7 @@
 			you can set ModelOnly to All
 		<div asp-validation-summary="ModelOnly"></div>
 		-->
-		<div class="mb-3">
+		<div class="mb-3" style="background-color: lightgrey">
 			<label asp-for="field.FieldName">Field Name</label>
 			<input asp-for="field.FieldName" class="form-control" />
 			<!-- you can type in a custom error between class="text-danger"> Custom error here </span> however it will overpower other error displays -->
@@ -23,6 +27,51 @@
 			<input asp-for="field.FieldSize" class="form-control" />
 			<span asp-validation-for="field.FieldSize" class="text-danger"></span>
 		</div>
+		<div class="mb-3" style="background-color: lightgrey">
+			<label asp-for="field.Latitude1">Lat1</label>
+			<input asp-for="field.Latitude1" class="form-control" />
+			<!-- you can type in a custom error between class="text-danger"> Custom error here </span> however it will overpower other error displays -->
+			<span asp-validation-for="field.Latitude1" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="field.Longitude1">Long1</label>
+			<input asp-for="field.Longitude1" class="form-control" />
+			<span asp-validation-for="field.Longitude1" class="text-danger"></span>
+		</div>
+		<div class="mb-3" style="background-color: lightgrey">
+			<label asp-for="field.Latitude2">Lat2</label>
+			<input asp-for="field.Latitude2" class="form-control" />
+			<!-- you can type in a custom error between class="text-danger"> Custom error here </span> however it will overpower other error displays -->
+			<span asp-validation-for="field.Latitude2" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="field.Longitude2">Long2</label>
+			<input asp-for="field.Longitude2" class="form-control" />
+			<span asp-validation-for="field.Longitude2" class="text-danger"></span>
+		</div>
+		<div class="mb-3" style="background-color: lightgrey">
+			<label asp-for="field.Latitude3">Lat3</label>
+			<input asp-for="field.Latitude3" class="form-control" />
+			<!-- you can type in a custom error between class="text-danger"> Custom error here </span> however it will overpower other error displays -->
+			<span asp-validation-for="field.Latitude3" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="field.Longitude3">Long3</label>
+			<input asp-for="field.Longitude3" class="form-control" />
+			<span asp-validation-for="field.Longitude3" class="text-danger"></span>
+		</div>
+		<div class="mb-3" style="background-color: lightgrey">
+			<label asp-for="field.Latitude4">Lat4</label>
+			<input asp-for="field.Latitude4" class="form-control" />
+			<!-- you can type in a custom error between class="text-danger"> Custom error here </span> however it will overpower other error displays -->
+			<span asp-validation-for="field.Latitude4" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="field.Longitude4">Long4</label>
+			<input asp-for="field.Longitude4" class="form-control" />
+			<span asp-validation-for="field.Longitude4" class="text-danger"></span>
+		</div>
+		
 		<button type="submit" class="btn btn-primary" style="width:150px;">Update Field</button>
 		<a asp-page="Index" class="btn btn-primary" style="width:150px;">Back To List</a>
 	</div>

@@ -23,8 +23,7 @@
     <div class="text-center">
 
         <h1 class="display-4">Farm Overview</h1>
-        <p>I think we should make this like a clear overview page to view resources, summary of tasks, farm information (such as a map), etc...</p>
-        <p>Check Pages/Index/Index.cshtml to see how to grab the users userID</p>
+        <p>Welcome to your farm's overview page! Here you can see a map of your fields and a summary of your farm!</p>
 
 
     </div>
@@ -93,7 +92,7 @@
                         @foreach (var task in Model.TaskTimetable.Where(f => f.UserID == currentUserId))
                         {
 
-                            @if (@task.TaskEnd.Date > DateTime.Now)
+                            @if (@task.TaskEnd.Date >= DateTime.Now)
                             {
                                 counter = counter + 1;
 

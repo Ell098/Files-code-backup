@@ -18,13 +18,25 @@
 	<br /><br />
 
 	<!-- this will show a set notification for when one of the three actions is performed on the database. Notification can be found at the end of the .cs files -->
-	@if (TempData["success"] != null)
+	@if (TempData["Fsuccess"] != null)
 	{
 		
-		<p class="text-success">@TempData["success"]</p>
+		<p class="text-success">@TempData["Fsuccess"]</p>
+
 
 	}
-	
+	@if (TempData["FEsuccess"] != null)
+	{
+
+		<p class="text-success">@TempData["FEsuccess"]</p>
+
+	}
+	@if (TempData["FDsuccess"] != null)
+	{
+
+		<p class="text-success">@TempData["FDsuccess"]</p>
+
+	}
 	@{
 		var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Retrieve current user's ID
 	}

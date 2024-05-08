@@ -21,7 +21,7 @@ div {
 .navheader {
     margin-top: -90px;
     /*position: fixed;*/
-
+    
     background-image: linear-gradient(#50aa4f, #ecf6ec);
     border-bottom: 10px;
     border-color: black;
@@ -71,8 +71,6 @@ form {
     margin-bottom: 70px;
 }
 
-header * {
-}
 
 #fix{
     margin-top: 0px;

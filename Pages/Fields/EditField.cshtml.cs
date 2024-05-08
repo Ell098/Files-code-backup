@@ -40,7 +40,7 @@ namespace FarmApplication.Pages.Fields
                 //{
                     _db.Fields.Update(field);
                     await _db.SaveChangesAsync();
-                    TempData["success"] = "Field Updated";
+                    TempData["FEsuccess"] = "Field Updated";
                     return RedirectToPage("Index");
 
                 //}

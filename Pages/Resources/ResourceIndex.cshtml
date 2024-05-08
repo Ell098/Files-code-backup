@@ -46,8 +46,12 @@
 	@if (TempData["resources-edit"] != null)
 	{
 		<p class="text-success">@TempData["resources-edit"]</p>
+		
 	}
-
+	@if (TempData["Rsuccess"] != null)
+	{
+		<p class="text-success">@TempData["Rsuccess"]</p>
+	}
 
 	<table class="table table-bordered table-striped" style="width:100%">
 		<thead>
@@ -112,6 +116,10 @@
 
 		<p class="text-success">@TempData["equipment-edit"]</p>
 
+	}
+	@if (TempData["Esuccess"] != null)
+	{
+		<p class="text-success">@TempData["Esuccess"]</p>
 	}
 
 
@@ -179,7 +187,10 @@
 		<p class="text-success">@TempData["workers"]</p>
 
 	}
-
+	@if (TempData["Wsuccess"] != null)
+	{
+		<p class="text-success">@TempData["Wsuccess"]</p>
+	}
 
 	<table id="ResourceTable" class="table table-bordered table-striped" style="width:100%">
 		<thead>

@@ -30,7 +30,7 @@ namespace FarmApplication.Pages.Resources
             {
                 _db.Workers.Remove(WorkerFromDB);
                 await _db.SaveChangesAsync();
-				TempData["success"] = "Field Deleted";
+				TempData["Wsuccess"] = $"Worker with id: {id} Deleted";
 				return RedirectToPage("ResourceIndex");
             }               
 						

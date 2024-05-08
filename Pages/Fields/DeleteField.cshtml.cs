@@ -30,7 +30,7 @@ namespace FarmApplication.Pages.Fields
             {
                 _db.Fields.Remove(FieldFromDB);
                 await _db.SaveChangesAsync();
-				TempData["success"] = "Field Deleted";
+				TempData["FDsuccess"] = "Field Deleted";
 				return RedirectToPage("Index");
             }               
 						

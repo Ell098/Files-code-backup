@@ -9,8 +9,8 @@ using System.Linq;
 
 namespace FarmApplication.Pages
 {
-    public class CalendarModel : PageModel
-    {
+	public class CalendarModel : PageModel
+	{
 		/*
 		public List<TaskEvent> TaskEvents { get; set; }
 
@@ -59,7 +59,7 @@ namespace FarmApplication.Pages
 
 
 
-		
+
 		/*public void OnGet()
         {
 			FarmTask = _db.Tasks						
@@ -76,33 +76,15 @@ namespace FarmApplication.Pages
 		{
 			Console.WriteLine($"SelectedDay in OnGetAsync: {selectedDay}");
 
+			// if you dont want to delete tasks from the database remove this line
+			//await DeleteFinishedTasksAsync();
+
 			FarmTask = _db.Tasks
 				.Include(ft => ft.FieldValues)
 				.Include(ft => ft.ResourcesValues)
 				.Include(ft => ft.EquipmentValues)
-				.Include(ft => ft.WorkersValues)				 
+				.Include(ft => ft.WorkersValues)
 				.ToList();
-
-			//var testing1 = selectedDay.Date;
-			//var testing2 = selectedDay.Date.AddDays(1);
-
-			//Console.WriteLine($"Testing1: {testing1}"); // Output: Testing1: 05/04/2024 00:00:00
-			//Console.WriteLine($"Testing2: {testing2}");
-
-
-			//DateTime parsedSelectedDay;
-			//DateTime.TryParseExact(selectedDay, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedSelectedDay);
-			//Console.WriteLine($"SelectedDay in OnGetAsync: {parsedSelectedDay}");
-
-			//int day = selectedDay.Day;
-			//int month = selectedDay.Month;
-			//int year = selectedDay.Year;
-
-			//Console.WriteLine($"Day: {day}, Month: {month}, Year: {year}");
-
-			// Construct correctedSelectedDay using the correct order (dd/mm/yyyy)
-			//DateTime correctedSelectedDay;
-			//correctedSelectedDay = new DateTime(year, day, month);
 
 
 			// Notice -- selectedDay is stuck in american format, whatever option you pick from the drop down gets converted
@@ -110,19 +92,52 @@ namespace FarmApplication.Pages
 			TaskTimetable = _db.Tasks
 				.Where(t => t.TaskStart.Date == selectedDay && t.TaskStart <= selectedDay.Date.AddDays(1))
 				.ToList();
-			
-
-
-
 
 
 			Days = new SelectList(await _db.Tasks
 				.Select(t => t.TaskStart.Date)
 				.Distinct()
 				.ToListAsync());
-			
+
 			//return Partial("_TaskTable", tasks);
 			//return new JsonResult(TaskTimetable);
 		}
+
+
+		public async Task<IActionResult> OnPostDeleteAsync(int taskId)
+		{
+			var task = await _db.Tasks.FindAsync(taskId);
+
+			if (task != null)
+			{
+				_db.Tasks.Remove(task);
+				await _db.SaveChangesAsync();
+				return RedirectToPage("Calendar");
+			}
+
+			return RedirectToPage("Calendar");
+		}
+
+
+
+
+
+
+		// this will delete tasks once the task end passes
+		private async Task DeleteFinishedTasksAsync()
+		{
+			var endedTasks = await _db.Tasks
+				.Where(t => t.TaskEnd <= DateTime.Now)
+				.ToListAsync();
+
+			foreach (var task in endedTasks)
+			{
+				_db.Tasks.Remove(task);
+			}
+
+			await _db.SaveChangesAsync();
+		}
+
+
 	}
 }

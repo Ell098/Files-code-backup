@@ -141,7 +141,7 @@ namespace FarmApplication.Pages
                     ModelState.AddModelError("EquipmentCountToUse", "EquipmentCountToUse should not be greater than whats on hand");
                     return BadRequest(ModelState);
                 }
-                findEquipmentFK.EquipmentCount -= EquipmentCountToUse;
+                //findEquipmentFK.EquipmentCount -= EquipmentCountToUse; -- not needed as equipment has more than one useage limit
             }
 
 

@@ -18,6 +18,15 @@ div {
 /*Navbar styling*/
 
 
+.display-4{
+font-weight: 500;
+}
+
+.text-center p{
+    font-size: 18px;
+    font-weight: 500;
+}
+
 .navheader {
     margin-top: -90px;
     /*position: fixed;*/
@@ -103,12 +112,13 @@ form {
 /*Map area css*/
 
 #map {
-    
+    border: solid 2px black;
     height: 400px;
     margin-bottom: 100px;
 }
 
 .map-container {
+    
     width: 50%;
     flex: 1;
 }
